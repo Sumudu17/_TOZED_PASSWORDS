@@ -16,3 +16,35 @@ After extensive googleing and with the help of AI, a working code was finally ob
 It is **important** to note that the device tested had *firmware (version 1.23)* which was observed to block test user access if the device was in user mode, based on the file present in device. Given that most operators' firmware is not updated and assuming every TOZED device has the same `tozed_param - config ver. S12U-SC001-v3.26UP`  file, there is a chance that the generated passwords could work on other devices.
 
 ## Again, This case study was done solely out of curiosity and for the joy of discovery. No commercial interest or illegal actions are being promoted.
+
+## Usage
+
+A prebuilt Windows/Linux binary is provided under `rust-tool/build/`. Run it with the device's IMEI and MAC address as positional arguments:
+
+```bash
+# Windows
+.\rust-tool\build\tozed-password-rust-tool.exe <IMEI> <MAC>
+
+# Linux
+./rust-tool/build/tozed-password-rust-tool <IMEI> <MAC>
+```
+
+### Example
+
+```bash
+./tozed-password-rust-tool.exe 490154203237518 AA:BB:CC:DD:EE:FF
+```
+
+```
+IMEI: 490154203237518
+MAC: AA:BB:CC:DD:EE:FF
+Test password: 04845527
+Operator password is: P9MMdR4D
+User password is: M2gX8RMP
+```
+
+> The IMEI and MAC above are placeholders for illustration only. Run the tool with your own device's IMEI/MAC (printed on the device label) to get its actual passwords. Never share real device IMEIs/MACs or generated passwords publicly.
+
+## Credits
+
+This is a fork/republish of the original reverse-engineering work by [eshanOnila](https://github.com/eshanOnila/_TOZED_PASSWORDS), kept here with the original MIT license.
